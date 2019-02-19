@@ -5,9 +5,9 @@ import Link from 'next/link'
 const Header = props => (
   <header className={headerStyle.header}>
     <div className={headerStyle.container}>
-      <div className="logo">
+      <div className={headerStyle.logo}>
         {/* <img src="/static/codingleo_logo.png" alt="Codingleo Logo" title="Codingleo"/> */}
-        <b>CodingLeo</b>
+        <b>{'<CodingLeo />'}</b>
       </div>
       <nav className={headerStyle.navigation}>
         <Link prefetch href="/">

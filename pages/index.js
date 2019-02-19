@@ -13,7 +13,18 @@ class Home extends React.Component {
         facebookAppId="355608221709204"
       >
         <Header />
-        <div>Hello</div>
+        <section className={`${indexStyle.jumbotrom}`}>
+          <div className={`${indexStyle.container}`}>
+            <section className={`${indexStyle.presentation}`}>
+              <h1>Hello, I'm Leonardo Ribeiro</h1>
+              <p>A software developer focused on building web based applications with <code>#javascript</code></p>
+              <p>I also like to create video tutorials on <a target="_blank" href="https://www.youtube.com/channel/UCO9DNngvvVxdAqUiIRq3zIw" className={indexStyle.youtubeLink}>YouTube</a></p>
+            </section>
+            <section className={`${indexStyle.presentation}`}>
+              <h3>If you're a company looking for a great developer, I can help you. So Get in Touch</h3>
+            </section>
+          </div>
+        </section>
       </DefaultTemplate>
     )
   }
