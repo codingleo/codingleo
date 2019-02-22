@@ -1,31 +1,84 @@
 import React from 'react'
-import DefaultTemplate from './_default'
+import DefaultTemplate from './_document'
 import Header from '../components/header'
 import indexStyle from './index.styl'
+import { homeContext, homeData } from '../states/indexContext'
 
-class Home extends React.Component {
+class Home extends DefaultTemplate {
+  constructor (props) {
+    super(props)
+    this.state = homeData
+  }
+
+  onTitleClick (e) {
+    this.setState(state => ({
+      presentation: state.presentation.me === "Hello, I'm Leonardo Ribeiro"
+        ? Object.assign({},
+          this.state.presentation,
+          { me: "Hello, I'm Leo Ribeiro" }
+        )
+        : Object.assign({},
+          this.state.presentation,
+          { me: "Hello, I'm Leonardo Ribeiro" }
+        )
+    }))
+  }
+
+  onSubscribeInputChange (e) {
+    this.setState({
+      subscribeEmail: e.target.value
+    })
+  }
+
+  subscribe (email) {
+    return e => {
+      this.setState({
+        isLoadingSubscription: true
+      })
+
+      setTimeout(() => {
+        this.setState({
+          isLoadingSubscription: false,
+          subscribeEmail: ''
+        })
+      }, 3000)
+    }
+  }
+
+  renderBody () {
+    return (
+      <homeContext.Consumer>
+        {context => (
+          <section className={`${indexStyle.jumbotrom}`}>
+            <div className={`${indexStyle.container}`}>
+              <section className={`${indexStyle.presentation}`}>
+                <h1 onClick={this.onTitleClick.bind(this)}>{context.presentation.me}</h1>
+                {context.presentation.oneLineAbout(indexStyle)}
+              </section>
+              <section className={`${indexStyle.presentation}`}>
+                <h3>{context.presentation.toCompany}</h3>
+              </section>
+              <section className={`${indexStyle.subscribe}`}>
+                <div className={`${indexStyle.subscribeInput}`}>
+                  <input onChange={this.onSubscribeInputChange.bind(this)} disabled={context.isLoadingSubscription} value={context.subscribeEmail} type="email" placeholder="Your best e-mail here" />
+                  <button onClick={this.subscribe(context.subscribeEmail).bind(this)} disabled={context.isLoadingSubscription} className={`${indexStyle.cta}`}>{context.isLoadingSubscription ? 'Loading...' : 'Subscribe'}</button>
+                </div>
+              </section>
+            </div>
+          </section>
+        )}
+      </homeContext.Consumer>
+    )
+  }
+
   render () {
     return (
-      <DefaultTemplate
-        title="CodingLeo - Home"
-        description="I'm a software developer with more than 8 years of experience in web based applications."
-        twitterUserName="codingleo"
-        facebookAppId="355608221709204"
-      >
-        <Header />
-        <section className={`${indexStyle.jumbotrom}`}>
-          <div className={`${indexStyle.container}`}>
-            <section className={`${indexStyle.presentation}`}>
-              <h1>Hello, I'm Leonardo Ribeiro</h1>
-              <p>A software developer focused on building web based applications with <code>#javascript</code></p>
-              <p>I also like to create video tutorials on <a target="_blank" href="https://www.youtube.com/channel/UCO9DNngvvVxdAqUiIRq3zIw" className={indexStyle.youtubeLink}>YouTube</a></p>
-            </section>
-            <section className={`${indexStyle.presentation}`}>
-              <h3>If you're a company looking for a great developer, I can help you. So Get in Touch</h3>
-            </section>
-          </div>
-        </section>
-      </DefaultTemplate>
+      <homeContext.Provider value={this.state}>
+        <React.Fragment>
+          <Header />
+          {this.renderBody()}
+        </React.Fragment>
+      </homeContext.Provider>
     )
   }
 }

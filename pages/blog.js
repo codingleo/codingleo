@@ -1,19 +1,14 @@
 import React from 'react'
-import DefaultTemplate from './_default'
+import DefaultTemplate from './_document'
 import Header from '../components/header'
 
-class Blog extends React.Component {
+class Blog extends DefaultTemplate {
   render () {
     return (
-      <DefaultTemplate
-        title="CodingLeo - Blog"
-        description="I'm a software developer with more than 8 years of experience in web based applications."
-        twitterUserName="codingleo"
-        facebookAppId="355608221709204"
-      >
+      <React.Fragment>
         <Header />
         <div>Blog</div>
-      </DefaultTemplate>
+      </React.Fragment>
     )
   }
 }

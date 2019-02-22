@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import NextHead from 'next/head'
+import { NextScript, Main } from 'next/document'
 
 const defaultDescription = ''
 const defaultIndexAndFollow = 'index, follow'
@@ -12,8 +13,8 @@ const defaultImageAltText = ''
 class DefaultTemplate extends React.Component {
   render () {
     return (
-      <NextHead title={this.props.title}>
-        <head>
+      <html>
+        <NextHead>
           <meta charSet="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
@@ -40,11 +41,12 @@ class DefaultTemplate extends React.Component {
           <meta name="twitter:image:alt" content={this.props.imageAltText || defaultImageAltText}></meta>
 
           <title>{this.props.title}</title>
-        </head>
+        </NextHead>
         <body>
-          {this.props.children}
+          <Main />
+          <NextScript />
         </body>
-      </NextHead>
+      </html>
     )
   }
 }
