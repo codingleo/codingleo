@@ -10,20 +10,6 @@ class Home extends DefaultTemplate {
     this.state = homeData
   }
 
-  onTitleClick (e) {
-    this.setState(state => ({
-      presentation: state.presentation.me === "Hello, I'm Leonardo Ribeiro"
-        ? Object.assign({},
-          this.state.presentation,
-          { me: "Hello, I'm Leo Ribeiro" }
-        )
-        : Object.assign({},
-          this.state.presentation,
-          { me: "Hello, I'm Leonardo Ribeiro" }
-        )
-    }))
-  }
-
   onSubscribeInputChange (e) {
     this.setState({
       subscribeEmail: e.target.value
@@ -52,16 +38,22 @@ class Home extends DefaultTemplate {
           <section className={`${indexStyle.jumbotrom}`}>
             <div className={`${indexStyle.container}`}>
               <section className={`${indexStyle.presentation}`}>
-                <h1 onClick={this.onTitleClick.bind(this)}>{context.presentation.me}</h1>
+                <h1>{context.presentation.me}</h1>
                 {context.presentation.oneLineAbout(indexStyle)}
-              </section>
-              <section className={`${indexStyle.presentation}`}>
-                <h3>{context.presentation.toCompany}</h3>
               </section>
               <section className={`${indexStyle.subscribe}`}>
                 <div className={`${indexStyle.subscribeInput}`}>
                   <input onChange={this.onSubscribeInputChange.bind(this)} disabled={context.isLoadingSubscription} value={context.subscribeEmail} type="email" placeholder="Your best e-mail here" />
                   <button onClick={this.subscribe(context.subscribeEmail).bind(this)} disabled={context.isLoadingSubscription} className={`${indexStyle.cta}`}>{context.isLoadingSubscription ? 'Loading...' : 'Subscribe'}</button>
+                </div>
+              </section>
+              <section className={`${indexStyle.customers}`}>
+                <h3>I've already worked with:</h3>
+                <div className={`${indexStyle.customerLogos}`}>
+                  <img src="static/images/kraft_heinz_logo.png" alt="Kraft Heinz Company" ariaLabeled="Kraft Heinz Company" title="Kraft Heinz Company" className={`${indexStyle.customerLogo}`}/>
+                  <img src="static/images/scalable_path_logo.png" alt="Scalable Path" ariaLabeled="Scalable Path" title="Scalable Path" className={`${indexStyle.customerLogo}`}/>
+                  <img src="static/images/sms_logo.png" alt="Strategic Management Society" ariaLabeled="Strategic Management Society" title="Strategic Management Society" className={`${indexStyle.customerLogo}`}/>
+                  <img src="static/images/greg_morris_cards_logo.png" alt="Greg Morris Cards" ariaLabeled="Greg Morris Cards" title="Greg Morris Cards" className={`${indexStyle.customerLogo}`}/>
                 </div>
               </section>
             </div>
