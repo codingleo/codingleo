@@ -1,0 +1,27 @@
+@import './colors.styl'
+@import 'kouto-swiss'
+
+.btn
+  display: block
+  color: $white
+  background: $black
+  position: relative
+  padding: 15px 20px
+  width: fit-content
+  transition: all 0.2s ease-in-out
+  text-decoration: none
+  cursor: pointer
+  border: none
+
+  &:hover
+    background: lighten($black, 20%)
+
+.btnInverse
+  color: $black !important
+  background: $white !important
+
+  &:hover
+    background: darken($white, 20%) !important
+
+.btnBold
+  padding: 25px 40px

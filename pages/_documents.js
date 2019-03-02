@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import NextHead from 'next/head'
-import { NextScript, Main } from 'next/document'
+import { Main, NextScript } from 'next/document'
 
 const defaultDescription = ''
 const defaultIndexAndFollow = 'index, follow'

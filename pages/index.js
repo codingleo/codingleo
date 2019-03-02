@@ -1,8 +1,10 @@
 import React from 'react'
-import DefaultTemplate from './_document'
+import DefaultTemplate from './_documents'
 import Header from '../components/header'
+import Footer from '../components/footer'
 import indexStyle from './index.styl'
 import { homeContext, homeData } from '../states/indexContext'
+import Link from 'next/link'
 
 class Home extends DefaultTemplate {
   constructor (props) {
@@ -41,19 +43,18 @@ class Home extends DefaultTemplate {
                 <h1>{context.presentation.me}</h1>
                 {context.presentation.oneLineAbout(indexStyle)}
               </section>
-              <section className={`${indexStyle.subscribe}`}>
-                <div className={`${indexStyle.subscribeInput}`}>
-                  <input onChange={this.onSubscribeInputChange.bind(this)} disabled={context.isLoadingSubscription} value={context.subscribeEmail} type="email" placeholder="Your best e-mail here" />
-                  <button onClick={this.subscribe(context.subscribeEmail).bind(this)} disabled={context.isLoadingSubscription} className={`${indexStyle.cta}`}>{context.isLoadingSubscription ? 'Loading...' : 'Subscribe'}</button>
-                </div>
+              <section className={`${indexStyle.getInTouch}`}>
+                <Link prefetch href="/contact">
+                  <a className={`${indexStyle.btn} ${indexStyle.btnBold}`}>Get in Touch</a>
+                </Link>
               </section>
               <section className={`${indexStyle.customers}`}>
                 <h3>I've already worked with:</h3>
                 <div className={`${indexStyle.customerLogos}`}>
-                  <img src="static/images/kraft_heinz_logo.png" alt="Kraft Heinz Company" ariaLabeled="Kraft Heinz Company" title="Kraft Heinz Company" className={`${indexStyle.customerLogo}`}/>
-                  <img src="static/images/scalable_path_logo.png" alt="Scalable Path" ariaLabeled="Scalable Path" title="Scalable Path" className={`${indexStyle.customerLogo}`}/>
-                  <img src="static/images/sms_logo.png" alt="Strategic Management Society" ariaLabeled="Strategic Management Society" title="Strategic Management Society" className={`${indexStyle.customerLogo}`}/>
-                  <img src="static/images/greg_morris_cards_logo.png" alt="Greg Morris Cards" ariaLabeled="Greg Morris Cards" title="Greg Morris Cards" className={`${indexStyle.customerLogo}`}/>
+                  <img src="static/images/kraft_heinz_logo.png" alt="Kraft Heinz Company" aria-labeled="Kraft Heinz Company" title="Kraft Heinz Company" className={`${indexStyle.customerLogo}`}/>
+                  <img src="static/images/scalable_path_logo.png" alt="Scalable Path" aria-labeled="Scalable Path" title="Scalable Path" className={`${indexStyle.customerLogo}`}/>
+                  <img src="static/images/sms_logo.png" alt="Strategic Management Society" aria-labeled="Strategic Management Society" title="Strategic Management Society" className={`${indexStyle.customerLogo}`}/>
+                  <img src="static/images/greg_morris_cards_logo.png" alt="Greg Morris Cards" aria-labeled="Greg Morris Cards" title="Greg Morris Cards" className={`${indexStyle.customerLogo}`}/>
                 </div>
               </section>
             </div>
@@ -69,6 +70,7 @@ class Home extends DefaultTemplate {
         <React.Fragment>
           <Header />
           {this.renderBody()}
+          <Footer />
         </React.Fragment>
       </homeContext.Provider>
     )

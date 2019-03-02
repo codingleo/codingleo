@@ -6,7 +6,6 @@ const Header = props => (
   <header className={headerStyle.header}>
     <div className={headerStyle.container}>
       <div className={headerStyle.logo}>
-        {/* <img src="/static/codingleo_logo.png" alt="Codingleo Logo" title="Codingleo"/> */}
         <b>{'<CodingLeo />'}</b>
       </div>
       <nav className={headerStyle.navigation}>
@@ -18,9 +17,6 @@ const Header = props => (
         </Link>
         <Link prefetch href="/portifolio">
           <a>Portifolio</a>
-        </Link>
-        <Link prefetch href="/blog">
-          <a>Blog</a>
         </Link>
         <Link prefetch href="/contact">
           <a>Contact</a>

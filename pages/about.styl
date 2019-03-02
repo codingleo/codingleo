@@ -1,0 +1,58 @@
+@import 'kouto-swiss'
+@import 'rupture'
+@import '../shared/styles/default.styl'
+
+.jumbotrom
+  height: ks-calc("50vh - 60px")
+
+.aboutContainer
+  @extend .jumbotrom
+  min-height: 80vh
+  background: $black
+  color: $white
+
+  .container
+    flex-direction: row
+    align-items: flex-start
+    justify-content: flex-start
+    flex-wrap: wrap
+
+.aboutText
+  float: left
+  text-align: left
+  letter-spacing: 0.1em
+  line-height: 1.4em
+  +to-width(400px)
+    width: 100%
+  +above(400px)
+    width: 50%
+
+  .highlight
+    padding: 5px
+    background: $white
+    color: $black
+    display: block
+    width: fit-content
+  
+  p
+    margin: 30px 0
+
+  .link
+    text-decoration: none
+    color: $white
+    transition: all 0.2s ease-in-out
+    
+    &:hover
+      text-decoration: underline
+      color: darken($white, 30%)
+
+.aboutPicture
+  @extend .aboutText
+
+  .aboutFigure
+    width: 100%
+    display: flex
+    align-items: center
+    justify-content: center
+
+

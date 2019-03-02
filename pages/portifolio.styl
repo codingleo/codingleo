@@ -1,0 +1,63 @@
+@import 'kouto-swiss'
+@import 'rupture'
+@import '../shared/styles/default.styl'
+
+.jumbotrom
+  height: ks-calc("50vh - 60px")
+
+.portfolioContainer
+  @extend .jumbotrom
+  min-height: 80vh
+  height: auto
+  background: $black
+  color: $white
+  flex-wrap: wrap
+  align-items: center
+  justify-content: center
+
+  .project
+    overflow: hidden
+    display: flex
+    align-items: center
+    justify-content: center
+    position: relative
+    margin: 0
+    background: $black
+    cursor: pointer
+    border: 2px solid $white
+    box-sizing: border-box
+    transition: all 0.2s ease-in-out      
+
+    img
+      opacity: 1
+      transition: all 0.2s ease-in-out   
+
+    figcaption
+      position: absolute
+      top: 50%
+      right: 0
+      transform: translate(100%, -50%)
+      padding: 10px
+      background: $black
+      color: $white
+      transition: all 0.2s ease-in-out
+    
+    +above(900px)
+      width: 25%
+    +to-width(900px)
+      width: 33.3%
+    +to-width(700px)
+      width: 50%
+    +to-width(400px)
+      width: 100%
+    
+    &:hover
+      img
+        opacity: 0.3
+        transform: translate(20px, 0)
+      figcaption
+        transform: translate(0, -50%)
+
+    
+
+
