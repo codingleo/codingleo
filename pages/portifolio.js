@@ -1,12 +1,11 @@
 import React from 'react'
-import DefaultTemplate from './_documents'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import portfolioStyle from './portifolio.styl'
 import portifolioContext from '../states/PortifolioContext'
 import fetch from 'isomorphic-fetch'
 
-class Portfolio extends DefaultTemplate {
+class Portfolio extends React.Component {
   constructor (props) {
     super(props)
     this.state = {

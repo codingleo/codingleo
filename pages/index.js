@@ -1,12 +1,11 @@
 import React from 'react'
-import DefaultTemplate from './_documents'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import indexStyle from './index.styl'
 import { homeContext, homeData } from '../states/indexContext'
 import Link from 'next/link'
 
-class Home extends DefaultTemplate {
+class Home extends React.Component {
   constructor (props) {
     super(props)
     this.state = homeData

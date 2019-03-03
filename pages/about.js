@@ -1,11 +1,10 @@
 import React from 'react'
-import DefaultTemplate from './_documents'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import aboutStyle from './about.styl'
 import Link from 'next/link'
 
-class Home extends DefaultTemplate {
+class Home extends React.Component {
   renderBody () {
     return (
       <React.Fragment>

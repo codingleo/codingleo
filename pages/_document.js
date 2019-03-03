@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import NextHead from 'next/head'
-import { Main, NextScript } from 'next/document'
+import Document, { Head, Main, NextScript } from 'next/document'
 
 const defaultDescription = ''
 const defaultIndexAndFollow = 'index, follow'
@@ -10,11 +9,15 @@ const defaultUrl = ''
 const defaultSiteName = ''
 const defaultImageAltText = ''
 
-class DefaultTemplate extends React.Component {
+class DefaultTemplate extends Document {
+  static async getInitialProps (ctx) {
+    const initialProps = await Document.getInitialProps(ctx)
+    return { ...initialProps }
+  }
   render () {
     return (
       <html>
-        <NextHead>
+        <Head>
           <meta charSet="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
@@ -39,9 +42,7 @@ class DefaultTemplate extends React.Component {
 
           <meta property="og:site_name" content={this.props.siteName || defaultSiteName} />
           <meta name="twitter:image:alt" content={this.props.imageAltText || defaultImageAltText}></meta>
-
-          <title>{this.props.title}</title>
-        </NextHead>
+        </Head>
         <body>
           <Main />
           <NextScript />
