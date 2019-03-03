@@ -7,19 +7,24 @@ const mongoose = require('mongoose')
 const { promisify } = require('util')
 const sendgrid = require('@sendgrid/mail')
 const bodyParser = require('body-parser')
+const morgan = require('morgan')
+const compression = require('compression')
 
 dotenv.config()
 
-const redisClient = redis.createClient()
+const env = process.env.NODE_ENV || 'development'
+const mongoUser = process.env.MONGO_INITDB_ROOT_USERNAME
+const mongoPass = process.env.MONGO_INITDB_ROOT_PASSWORD
+const mongoDatabase = process.env.MONGO_INITDB_DATABASE
+const behanceKey = process.env.BEHANCE_API_KEY
+const dev = process.env.NODE_ENV !== 'production'
+
+const redisClient = redis.createClient(`redis://${dev ? 'localhost' : 'redis'}:6379`)
 const redisClientPromise = promisify(redisClient.get).bind(redisClient)
 
 mongoose.Promise = global.Promise
 
-const mongoUser = process.env.MONGO_INITDB_ROOT_USERNAME
-const mongoPass = process.env.MONGO_INITDB_ROOT_PASSWORD
-const mongoDatabase = process.env.MONGO_INITDB_DATABASE
-
-mongoose.connect(`mongodb://localhost:27017`, {
+mongoose.connect(`mongodb://${dev ? 'localhost' : 'mongo'}:27017`, {
   user: mongoUser,
   pass: mongoPass,
   dbName: mongoDatabase,
@@ -28,13 +33,18 @@ mongoose.connect(`mongodb://localhost:27017`, {
 
 sendgrid.setApiKey(process.env.SG_SECRET_KEY)
 
-const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
 app.prepare()
   .then(() => {
     const server = express()
+
+    server.use(morgan('combined'))
+
+    if (env === 'production') {
+      server.use(compression())
+    }
 
     server.use(bodyParser.urlencoded({ extended: false }))
     server.use(bodyParser.json())
@@ -73,7 +83,10 @@ app.prepare()
       if (projects) {
         res.json(JSON.parse(projects))
       } else {
-        fetch(`https://api.behance.net/v2/users/codingleo/projects?api_key=${process.env.BEHANCE_API_KEY}`, {
+        const url = `https://api.behance.net/v2/users/codingleo/projects?api_key=${behanceKey}`
+        console.log(url)
+
+        fetch(url, {
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -85,6 +98,9 @@ app.prepare()
           .then(projects => {
             redisClient.set('projects', JSON.stringify(projects))
             res.json(projects)
+          })
+          .catch(err => {
+            console.error(err)
           })
       }
     })

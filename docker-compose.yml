@@ -19,13 +19,3 @@ services:
       - /data/db/redis
     ports:
       - "6379:6379"
-
-  # app:
-  #   container_name: codingleo
-  #   restart: always
-  #   build: .
-  #   ports:
-  #     - '3000' : '3000'
-  #   links:
-  #     - redis
-  #     - mongo

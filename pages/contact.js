@@ -29,7 +29,6 @@ class Contact extends React.Component {
   handleSubmitClick (data) {
     const that = this
     return e => {
-      debugger
       that.setState({ isLoading: true })
 
       fetch('/sendMessage', {
@@ -58,6 +57,22 @@ class Contact extends React.Component {
             that.setState(initialState)
           }, 5000)
         })
+    }
+  }
+
+  isFormValid () {
+
+  }
+
+  renderButtonMessage () {
+    if (this.state.messageSent === null && !this.state.isLoading) {
+      return 'Send Message'
+    } else if (this.state.messageSent === null && this.state.isLoading) {
+      return 'Sending...'
+    } else if (this.state.messageSent) {
+      return 'Message Sent!'
+    } else {
+      return 'We had an error. Try again later!'
     }
   }
 
@@ -129,9 +144,11 @@ class Contact extends React.Component {
               </label>
               <button
                 onClick={this.handleSubmitClick(this.state).bind(this)}
-                disabled={this.state.isLoading || this.state.messageSent !== null}
+                disabled={this.state.isLoading || this.state.messageSent !== null || !this.state.email.valid || !this.state.subject.valid || !this.state.message.valid}
                 className={`${contactStyle.btn} ${this.state.messageSent === null ? '' : this.state.messageSent ? contactStyle.btnSuccess : contactStyle.btnError}`}>
-                {this.state.messageSent === null ? 'Send Message' : this.state.messageSent ? 'Message Sent!' : 'We had an error. Try again later!'}
+                {
+                  this.renderButtonMessage()
+                }
               </button>
             </section>
           </div>
