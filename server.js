@@ -13,27 +13,21 @@ const compression = require('compression')
 dotenv.config()
 
 const env = process.env.NODE_ENV || 'development'
-const mongoUser = process.env.MONGO_INITDB_ROOT_USERNAME
-const mongoPass = process.env.MONGO_INITDB_ROOT_PASSWORD
-const mongoDatabase = process.env.MONGO_INITDB_DATABASE
-const behanceKey = process.env.BEHANCE_API_KEY
-const dev = process.env.NODE_ENV !== 'production'
+const isDev = env !== 'production'
 
-const redisClient = redis.createClient(`redis://${dev ? 'localhost' : 'redis'}:6379`)
+const mongoUrl = process.env.MONGO_URL
+const behanceKey = process.env.BEHANCE_API_KEY
+
+const redisClient = redis.createClient(`redis://${isDev ? 'localhost' : 'redis'}:6379`)
 const redisClientPromise = promisify(redisClient.get).bind(redisClient)
 
 mongoose.Promise = global.Promise
 
-mongoose.connect(`mongodb://${dev ? 'localhost' : 'mongo'}:27017`, {
-  user: mongoUser,
-  pass: mongoPass,
-  dbName: mongoDatabase,
-  useNewUrlParser: true
-})
+mongoose.connect(mongoUrl, { useNewUrlParser: true })
 
 sendgrid.setApiKey(process.env.SG_SECRET_KEY)
 
-const app = next({ dev })
+const app = next({ isDev })
 const handle = app.getRequestHandler()
 
 app.prepare()
