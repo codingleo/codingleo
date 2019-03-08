@@ -15,15 +15,10 @@ dotenv.config()
 const env = process.env.NODE_ENV || 'development'
 const dev = env !== 'production'
 
-const mongoUrl = process.env.MONGO_URL
 const behanceKey = process.env.BEHANCE_API_KEY
 
 const redisClient = redis.createClient(`redis://${dev ? 'localhost' : 'redis'}:6379`)
 const redisClientPromise = promisify(redisClient.get).bind(redisClient)
-
-mongoose.Promise = global.Promise
-
-mongoose.connect(mongoUrl, { useNewUrlParser: true })
 
 sendgrid.setApiKey(process.env.SG_SECRET_KEY)
 
