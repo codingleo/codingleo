@@ -3,11 +3,13 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import aboutStyle from './about.styl'
 import Link from 'next/link'
+import Head from 'next/head'
 
 class Home extends React.Component {
   renderBody () {
     return (
       <React.Fragment>
+        <MyHead></MyHead>
         <section className={`${aboutStyle.jumbotrom}`}>
           <div className={`${aboutStyle.container}`}>
             <section>

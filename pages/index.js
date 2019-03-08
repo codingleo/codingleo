@@ -5,6 +5,7 @@ import indexStyle from './index.styl'
 import { homeContext, homeData } from '../states/indexContext'
 import Link from 'next/link'
 import Head from 'next/head'
+import MyHead from '../components/MyHead'
 
 class Home extends React.Component {
   constructor (props) {
@@ -38,9 +39,7 @@ class Home extends React.Component {
       <homeContext.Consumer>
         {context => (
           <section className={`${indexStyle.jumbotrom}`}>
-            <Head>
-              <title>{`< codingleo /> maneiro`}</title>
-            </Head>
+            <MyHead></MyHead>
             <div className={`${indexStyle.container}`}>
               <section className={`${indexStyle.presentation}`}>
                 <h1>{context.presentation.me}</h1>

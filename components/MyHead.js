@@ -1,16 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Head from 'next/head'
 
 const defaultDescription = "I'm Leonardo Ribeiro, a software developer focused on building web based applications with #javascript"
 const defaultIndexAndFollow = 'index, follow'
-const defaultImage = ''
-const defaultUrl = ''
-const defaultSiteName = 'leoribeiro.dev'
-const defaultImageAltText = ''
+const defaultImage = 'static/thumbnail_leoribeiro_codingleo.png'
+const defaultUrl = 'https://leoribeiro.dev'
+const defaultSiteName = 'Leonardo Ribeiro'
+const defaultImageAltText = 'Leonardo Ribeiro - Sofware Developer - Full Stack Javascript'
+const defaultTitle = '< codingleo />'
 
 const MyHead = (props) => {
   return (
-    <React.Fragment>
+    <Head>
+      <title>{props.title || defaultTitle}</title>
       <meta name="description" content={props.description || defaultDescription} />
       <meta name="robots" content={props.indexAndFollow || defaultIndexAndFollow} />
 
@@ -19,7 +22,7 @@ const MyHead = (props) => {
       <link rel="mask-icon" href="/static/favicon-mask.svg" color="#49B882" />
       <link rel="icon" href="/static/favicon.ico" />
 
-      <meta property="og:title" content={props.title} />
+      <meta property="og:title" content={props.title || defaultTitle} />
       <meta property="og:description" content={props.description || defaultDescription} />
       <meta property="og:image" content={props.image || defaultImage} />
       <meta property="og:url" content={props.url || defaultUrl} />
@@ -39,7 +42,7 @@ const MyHead = (props) => {
           'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
           })(window,document,'script','dataLayer','GTM-5VPQ5Q8');` }}></script>
       {/* <!-- End Google Tag Manager --> */}
-    </React.Fragment>
+    </Head>
   )
 }
 
