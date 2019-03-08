@@ -1,5 +1,6 @@
 import React from 'react'
 import fetch from 'isomorphic-fetch'
+import MyHead from '../components/MyHead'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import contactStyle from './contact.styl'
@@ -60,10 +61,6 @@ class Contact extends React.Component {
     }
   }
 
-  isFormValid () {
-
-  }
-
   renderButtonMessage () {
     if (this.state.messageSent === null && !this.state.isLoading) {
       return 'Send Message'
@@ -97,6 +94,7 @@ class Contact extends React.Component {
   renderBody () {
     return (
       <React.Fragment>
+        <MyHead></MyHead>
         <section className={`${contactStyle.jumbotrom}`}>
           <div className={`${contactStyle.container}`}>
             <section>

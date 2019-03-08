@@ -1,4 +1,5 @@
 import React from 'react'
+import MyHead from '../components/MyHead'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import portfolioStyle from './portifolio.styl'
@@ -13,6 +14,7 @@ class Portfolio extends React.Component {
       isLoadingProjects: true
     }
   }
+
   componentDidMount () {
     const that = this
     fetch('/listProjects')
@@ -43,6 +45,9 @@ class Portfolio extends React.Component {
       <portifolioContext.Consumer>
         {context => (
           <React.Fragment>
+            <Head>
+              <title>{`< codingleo />`}</title>
+            </Head>
             <section className={`${portfolioStyle.jumbotrom}`}>
               <div className={`${portfolioStyle.container}`}>
                 <section>

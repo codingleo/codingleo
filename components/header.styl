@@ -1,4 +1,6 @@
-@import '../shared/styles/default.styl' 
+@import 'kouto-swiss'
+@import 'rupture'
+@import '../shared/styles/default.styl'
 
 .header
   width: 100%
@@ -9,17 +11,27 @@
   color: #000
   background: #fff
 
+  +to-width(600px)
+      height: 120px
+
   .container
     display: flex
     flex-direction: row
     align-items: center
     justify-content: space-between
 
+    +to-width(600px)
+      flex-direction: column
+
+
 .logo
     font-family: "Share Tech Mono", sans-serif
     color: $white
     background: $black
     padding: 3px 10px
+
+    +to-width(600px)
+      margin-bottom: 20px
 
 .navigation
   text-align: right
