@@ -25,6 +25,8 @@ const MyHead = (props) => {
       <meta property="og:title" content={props.title || defaultTitle} />
       <meta property="og:description" content={props.description || defaultDescription} />
       <meta property="og:image" content={props.image || defaultImage} />
+      <meta property="og:image:width" content="1200"/>
+      <meta property="og:image:height" content="628"/>
       <meta property="og:url" content={props.url || defaultUrl} />
 
       <meta name="twitter:card" content="summary_large_image" />
