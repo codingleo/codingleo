@@ -5,18 +5,27 @@
   display: flex
   align-items: center
   justify-content: center
-  height: 60px
   color: $white
   background: $black
+  +above(600px)
+    height: 60px
+  +to-width(600px)
+    min-height: 60px
 
 .container
   display: flex
   flex-direction: row
   align-items: center
-  justify-content: space-between
+  justify-content: space-around
+  +to-width(600px)
+    flex-direction: column
+    justify-content: center
+    padding: 15px 0
 
 .logo
   font-family: "Share Tech Mono", sans-serif
   color: $black
   background: $white
   padding: 3px 10px
+  +to-width(600px)
+    margin: 20px 0

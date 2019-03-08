@@ -4,6 +4,7 @@ import Footer from '../components/footer'
 import indexStyle from './index.styl'
 import { homeContext, homeData } from '../states/indexContext'
 import Link from 'next/link'
+import Head from 'next/head'
 
 class Home extends React.Component {
   constructor (props) {
@@ -37,6 +38,9 @@ class Home extends React.Component {
       <homeContext.Consumer>
         {context => (
           <section className={`${indexStyle.jumbotrom}`}>
+            <Head>
+              <title>{`< codingleo /> maneiro`}</title>
+            </Head>
             <div className={`${indexStyle.container}`}>
               <section className={`${indexStyle.presentation}`}>
                 <h1>{context.presentation.me}</h1>
@@ -50,10 +54,11 @@ class Home extends React.Component {
               <section className={`${indexStyle.customers}`}>
                 <h3>I've already worked with:</h3>
                 <div className={`${indexStyle.customerLogos}`}>
-                  <img src="static/images/kraft_heinz_logo.png" alt="Kraft Heinz Company" aria-labeled="Kraft Heinz Company" title="Kraft Heinz Company" className={`${indexStyle.customerLogo}`}/>
-                  <img src="static/images/scalable_path_logo.png" alt="Scalable Path" aria-labeled="Scalable Path" title="Scalable Path" className={`${indexStyle.customerLogo}`}/>
-                  <img src="static/images/sms_logo.png" alt="Strategic Management Society" aria-labeled="Strategic Management Society" title="Strategic Management Society" className={`${indexStyle.customerLogo}`}/>
-                  <img src="static/images/greg_morris_cards_logo.png" alt="Greg Morris Cards" aria-labeled="Greg Morris Cards" title="Greg Morris Cards" className={`${indexStyle.customerLogo}`}/>
+                  {
+                    context.companiesWorked.map((company, i) => (
+                      <img key={i} src={company.path} alt={company.title} aria-label={company.title} className={`${indexStyle.customerLogo}`}/>
+                    ))
+                  }
                 </div>
               </section>
             </div>

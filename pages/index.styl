@@ -1,9 +1,18 @@
 @import 'kouto-swiss'
+@import 'rupture'
 @import '../shared/styles/reset.styl'
 @import '../shared/styles/default.styl'
 
 .presentation
   letter-spacing: 0.1rem
+
+  +to-width(600px)
+      letter-spacing: inherit
+      text-align: center
+      margin: 95px 0
+
+      h1
+        font-size: 1.3rem
   
   .youtubeLink
     color: #FF0000
@@ -79,9 +88,15 @@
   flex-direction: row
   align-items: center
   justify-content: space-around
+  +to-width(600px)
+    margin: 30px 0
+    flex-direction: column
 
   .customerLogo
     max-width: 150px
     max-height: 80px
     margin: 0 20px
     display: block
+    +to-width(600px)
+      margin 15px 0
+    

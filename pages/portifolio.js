@@ -13,6 +13,7 @@ class Portfolio extends React.Component {
       isLoadingProjects: true
     }
   }
+
   componentDidMount () {
     const that = this
     fetch('/listProjects')

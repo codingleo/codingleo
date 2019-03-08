@@ -1,7 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Lato|Share+Tech+Mono');
+@import 'kouto-swiss'
+@import 'rupture'
 @import './colors.styl'
 @import './reset.styl'
 @import './buttons.styl'
+@import url('https://fonts.googleapis.com/css?family=Lato|Share+Tech+Mono');
 
 h1
     margin: 0
@@ -15,11 +17,17 @@ body
 .container
   max-width: 1200px
   width: 100%
-  margin: 0 30px
+  padding: 0 30px
+  +to-width(600px)
+    padding: 0 15px
 
 .jumbotrom
-  height: ks-calc('100vh - 60px')
   text-align: center
   display: flex
   justify-content: center
   align-items: center
+  +to-width(600px)
+    min-height: ks-calc('100vh - 60px')
+    flex-direction: column
+  +above(600px)
+    height: ks-calc('100vh - 60px')

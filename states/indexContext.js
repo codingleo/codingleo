@@ -12,8 +12,24 @@ export const homeData = {
       </React.Fragment>
     )
   },
-  isLoadingSubscription: false,
-  subscribeEmail: ''
+  companiesWorked: [
+    {
+      title: 'Kraft Heinz Company',
+      path: 'static/images/kraft_heinz_logo.png'
+    },
+    {
+      title: 'Scalable Path',
+      path: 'static/images/scalable_path_logo.png'
+    },
+    {
+      title: 'Strategic Management Society',
+      path: 'static/images/sms_logo.png'
+    },
+    {
+      title: 'Greg morris Cards',
+      path: 'static/images/greg_morris_cards_logo.png'
+    }
+  ]
 }
 
 export const homeContext = React.createContext(homeData)
