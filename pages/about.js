@@ -4,6 +4,7 @@ import Footer from '../components/footer'
 import aboutStyle from './about.styl'
 import Link from 'next/link'
 import Head from 'next/head'
+import MyHead from '../components/MyHead'
 
 class Home extends React.Component {
   renderBody () {

@@ -3,70 +3,83 @@
 @import '../shared/styles/default.styl'
 
 .jumbotrom
-    min-height: ks-calc("50vh - 60px") !important
-    padding: 0 40px !important
+  height: ks-calc("50vh - 60px") !important
+  min-height: ks-calc("50vh - 60px") !important
+  padding: 0 40px !important
   +to-width(600px)
     min-height: ks-calc("50vh - 120px") !important
 
 .aboutContainer
-  @extend .jumbotrom
+  padding: 0 40px !important
   background: $black
   color: $white
-  +to-width(600px)
-    height: auto
-    padding: 0 20px
-
-  .container
-    flex-direction: row
-    align-items: flex-start
-    justify-content: flex-start
-    flex-wrap: wrap
-    +to-width(600px)
-      text-align: center
-      flex-direction: column
-
-.aboutText
-  text-align: left
-  letter-spacing: 0.1em
-  +to-width(600px)
-    text-align: center
-    width: 100%
-    font-size: 0.8em
-    margin: 0 10px
-  +above(600px)
-    line-height: 1.4em
-    float: left
-    width: 50%
-
-  .highlight
-    padding: 5px
-    background: $white
-    color: $black
-    display: block
-    width: fit-content
-  
-  p
-    margin: 30px 0
-    +to-width(600px)
-      text-align: center
-
-  .link
-    text-decoration: none
-    color: $white
-    transition: all 0.2s ease-in-out
-    
-    &:hover
-      text-decoration: underline
-      color: darken($white, 30%)
-
-  .btn
-    margin: 0 auto
-
-.aboutPicture
-  width: 100%
+  height: auto
   display: flex
   align-items: center
   justify-content: center
+  +to-width(769px)
+    padding: 20px !important
+
+  .container
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+    flex-wrap: nowrap
+    height: auto
+    +to-width(600px)
+      padding: 20px 0
+      flex-wrap: wrap
+      text-align: center
+      flex-direction: column
+      padding: 0
+
+    .aboutText
+      text-align: left
+      letter-spacing: 0.1em
+      float: left
+      flex-shrink: 1
+      display: block
+      width: 100%
+      +to-width(769px)
+        text-align: center
+        font-size: 0.8em
+
+      .highlight
+        padding: 5px
+        background: $white
+        color: $black
+        display: block
+        width: fit-content
+        text-align: center
+        +to-width(769px)
+          margin: 0 auto
+      
+      p
+        margin: 30px 0
+        +to-width(769px)
+          text-align: center
+
+      .link
+        text-decoration: none
+        color: $white
+        transition: all 0.2s ease-in-out
+        
+        &:hover
+          text-decoration: underline
+          color: darken($white, 30%)
+
+      .btn
+        +to-width(769px)
+          margin: 0 auto
+
+.aboutPicture
+  display: flex
+  align-items: center
+  justify-content: center
+  height: auto
+  flex-shrink: 2
+  width: 100%
 
   .aboutFigure
     width: 100%

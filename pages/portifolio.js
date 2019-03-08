@@ -45,9 +45,9 @@ class Portfolio extends React.Component {
       <portifolioContext.Consumer>
         {context => (
           <React.Fragment>
-            <Head>
+            <MyHead>
               <title>{`< codingleo />`}</title>
-            </Head>
+            </MyHead>
             <section className={`${portfolioStyle.jumbotrom}`}>
               <div className={`${portfolioStyle.container}`}>
                 <section>
