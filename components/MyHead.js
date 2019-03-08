@@ -22,6 +22,9 @@ const MyHead = (props) => {
       <link rel="mask-icon" href="/static/favicon-mask.svg" color="#49B882" />
       <link rel="icon" href="/static/favicon.ico" />
 
+      <meta property="fb:app_id" content="355608221709204" />
+      
+      <meta property="og:title" content="website" />
       <meta property="og:title" content={props.title || defaultTitle} />
       <meta property="og:description" content={props.description || defaultDescription} />
       <meta property="og:image" content={props.image || defaultImage} />
