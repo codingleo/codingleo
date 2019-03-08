@@ -4,7 +4,7 @@ import Head from 'next/head'
 
 const defaultDescription = "I'm Leonardo Ribeiro, a software developer focused on building web based applications with #javascript"
 const defaultIndexAndFollow = 'index, follow'
-const defaultImage = 'static/thumbnail_leoribeiro_codingleo.png'
+const defaultImage = 'https://leoribeiro.dev/static/thumbnail_leoribeiro_codingleo.png'
 const defaultUrl = 'https://leoribeiro.dev'
 const defaultSiteName = 'Leonardo Ribeiro'
 const defaultImageAltText = 'Leonardo Ribeiro - Sofware Developer - Full Stack Javascript'
