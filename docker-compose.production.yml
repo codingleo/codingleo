@@ -2,15 +2,12 @@ version: '3'
 
 services:
   app:
-    container_name: codingleo
+    container_name: codingleo-production
     restart: always
     env_file: .env
     environment: 
       - NODE_ENV=production
       - BEHANCE_API_KEY=${BEHANCE_API_KEY}
-      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
-      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
-      - MONGO_INITDB_DATABASE=${MONGO_INITDB_DATABASE}
       - FACEBOOK_APP_ID=${FACEBOOK_APP_ID}
       - SG_API_KEY=${SG_API_KEY}
       - SG_SECRET_KEY=${SG_SECRET_KEY}
@@ -19,8 +16,8 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      # - mongo
+      - mongo
       - redis
     links: 
-      # - mongo
+      - mongo
       - redis

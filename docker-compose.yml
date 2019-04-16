@@ -1,18 +1,13 @@
 version: '3'
 
 services:
-  # mongo:
-  #   container_name: mongo
-  #   image: mongo:latest
-  #   volumes:
-  #     - ./data/mongo:/data/db/mongo
-  #   ports:
-  #     - "27017:27017"
-  #   env_file: .env
-  #   environment:
-  #     MONGO_URL: ${MONGO_INITDB_ROOT_USERNAME}
-  #     MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
-  #     MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
+  mongo:
+    container_name: mongo
+    image: mongo:latest
+    volumes:
+      - ./data/mongo:/data/db/mongo
+    ports:
+      - "27017:27017"
 
   redis:
     container_name: redis

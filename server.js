@@ -3,7 +3,6 @@ const next = require('next')
 const dotenv = require('dotenv')
 const fetch = require('isomorphic-fetch')
 const redis = require('redis')
-const mongoose = require('mongoose')
 const { promisify } = require('util')
 const sendgrid = require('@sendgrid/mail')
 const bodyParser = require('body-parser')
@@ -17,7 +16,9 @@ const dev = env !== 'production'
 
 const behanceKey = process.env.BEHANCE_API_KEY
 
-const redisClient = redis.createClient(`redis://${dev ? 'localhost' : 'redis'}:6379`)
+const redisClient = redis.createClient(
+  `redis://${dev ? 'localhost' : 'redis'}:6379`
+)
 const redisClientPromise = promisify(redisClient.get).bind(redisClient)
 
 sendgrid.setApiKey(process.env.SG_SECRET_KEY)
@@ -25,7 +26,8 @@ sendgrid.setApiKey(process.env.SG_SECRET_KEY)
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
-app.prepare()
+app
+  .prepare()
   .then(() => {
     const server = express()
 
@@ -55,7 +57,8 @@ app.prepare()
 
         console.log(messageData)
 
-        sendgrid.send(messageData, false)
+        sendgrid
+          .send(messageData, false)
           .then(resp => resp.json())
           .then(response => {
             res.json(response)
@@ -77,7 +80,7 @@ app.prepare()
 
         fetch(url, {
           headers: {
-            'Accept': 'application/json',
+            Accept: 'application/json',
             'Content-Type': 'application/json'
           }
         })
@@ -98,12 +101,12 @@ app.prepare()
       return handle(req, res)
     })
 
-    server.listen(3000, (err) => {
+    server.listen(3000, err => {
       if (err) throw err
       console.log('> Ready on http://localhost:3000')
     })
   })
-  .catch((ex) => {
+  .catch(ex => {
     console.error(ex.stack)
     process.exit(1)
   })
