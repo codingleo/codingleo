@@ -2,8 +2,8 @@ const express = require('express')
 const next = require('next')
 const dotenv = require('dotenv')
 const fetch = require('isomorphic-fetch')
-const redis = require('redis')
-const { promisify } = require('util')
+// const redis = require('redis')
+// const { promisify } = require('util')
 const sendgrid = require('@sendgrid/mail')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
@@ -16,10 +16,10 @@ const dev = env !== 'production'
 
 const behanceKey = process.env.BEHANCE_API_KEY
 
-const redisClient = redis.createClient(
-  `redis://${dev ? 'localhost' : 'redis'}:6379`
-)
-const redisClientPromise = promisify(redisClient.get).bind(redisClient)
+// const redisClient = redis.createClient(
+//   `redis://${dev ? 'localhost' : 'redis'}:6379`
+// )
+// const redisClientPromise = promisify(redisClient.get).bind(redisClient)
 
 sendgrid.setApiKey(process.env.SG_SECRET_KEY)
 
@@ -70,32 +70,33 @@ app
     })
 
     server.get('/listProjects', async (req, res) => {
-      const projects = await redisClientPromise('projects')
+      // const projects = await redisClientPromise('projects')
 
-      if (projects) {
-        res.json(JSON.parse(projects))
-      } else {
-        const url = `https://api.behance.net/v2/users/codingleo/projects?api_key=${behanceKey}`
-        console.log(url)
+      // if (projects) {
+      //   res.json(JSON.parse(projects))
+      // } else {
+      const url = `https://api.behance.net/v2/users/codingleo/projects?api_key=${behanceKey}`
+      console.log(url)
 
-        fetch(url, {
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
-          }
+      fetch(url, {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(resp => {
+          return resp.json()
         })
-          .then(resp => {
-            return resp.json()
-          })
-          .then(projects => {
-            redisClient.set('projects', JSON.stringify(projects))
-            res.json(projects)
-          })
-          .catch(err => {
-            console.error(err)
-          })
-      }
-    })
+        .then(projects => {
+          // redisClient.set('projects', JSON.stringify(projects))
+          res.json(projects)
+        })
+        .catch(err => {
+          console.error(err)
+        })
+    }
+    // }
+    )
 
     server.get('*', (req, res) => {
       return handle(req, res)
