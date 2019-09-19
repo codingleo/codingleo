@@ -24,7 +24,11 @@
     "react-dom": "^16.8.2",
     "redis": "^2.8.0",
     "rupture": "^0.7.1",
-    "stylus": "^0.54.5"
+    "stylus": "^0.54.5",
+    "mixin-deep": ">=1.3.2",
+    "set-value": ">=2.0.1",
+    "eslint-utils": ">=1.4.1",
+    "lodash": ">=4.17.13"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
