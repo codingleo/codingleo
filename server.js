@@ -17,9 +17,8 @@ const dev = env !== 'production'
 const behanceKey = process.env.BEHANCE_API_KEY
 const redisUri = process.env.REDIS_URI
 
-const redisClient = redis.createClient(
-  redisUri
-)
+const redisClient = redis.createClient(redisUri)
+
 const redisClientPromise = promisify(redisClient.get).bind(redisClient)
 
 sendgrid.setApiKey(process.env.SG_SECRET_KEY)
