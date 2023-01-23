@@ -26,4 +26,4 @@ If you need any help taking your idea from paper to a high valuable web applicat
 - 🌱 I’m currently learning [ [Docker](https://www.docker.com/), [Kubernetes](https://kubernetes.io/), CI/CD tools ]
 - 👯 I’m looking to collaborate on [ Typescript Projects ]
 - 💬 Ask me about anything of my expertises above.
-- ⚡ Fun fact: I like mixing random tech stack.
+- ⚡ Fun fact: earth is not plane.
