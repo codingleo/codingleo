@@ -22,7 +22,7 @@ I also love to create tools and experiments for myself, like a robot that automa
 If you need any help taking your idea from paper to a high valuable web application, [talk to me](mailto:leo@verstand.tech).
 
 ### I few things about me:
-- 🔭 I’m currently working @ **Nodle** and Co-founded **Verstand Technologies**
+- 🔭 I’m currently working as a Co-founded @ **Verstand Technologies**
 - 🌱 I’m currently learning [ [Docker](https://www.docker.com/), [Kubernetes](https://kubernetes.io/), CI/CD tools ]
 - 👯 I’m looking to collaborate on [ Typescript Projects ]
 - 💬 Ask me about anything of my expertises above.
