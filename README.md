@@ -9,7 +9,7 @@ I already helped companies going from 0-1 with new products and helped improve e
 
 I also helped companies acquire funding for getting into polkadot parachain through a crowdloan website and they win, by having $52 million funded by the community through this website.
 
-I also love to create tools and experiments for myself, like a robot that automatically public posts on instagram in a daily basis that already has 30k+ followers. (see [ui.doses](https://instagram.com/ui.doses))
+I also love to create tools and experiments for myself, like a robot that automatically public posts on instagram in a daily basis that already has 30k+ followers. (see [@verstandtech](https://instagram.com/verstandtech))
 
 ### My expertise is:
 - ⚛️ React
